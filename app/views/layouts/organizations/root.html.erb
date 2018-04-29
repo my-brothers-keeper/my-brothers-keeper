@@ -1,0 +1,24 @@
+<div>
+    <h1>Log In</h1>
+
+    <!-- Form to login and create a session -->
+
+    <%= form_for(:session, url: login_path) do |f| %>
+           
+        <div>
+            <%= f.label :username %>
+            <%= f.text_field :username %>
+        </div>
+
+        <div>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+        </div>
+        
+        <div>
+            <%= f.submit 'Login' %>
+        </div>
+
+    <% end %>
+        
+</div>
