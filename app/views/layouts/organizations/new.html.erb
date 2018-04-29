@@ -1,5 +1,10 @@
+<h1>Create a New Account</h1>
 
-<%= form_for @user do |f| %>
+<div>
+
+<!-- Form to create an account -->
+
+    <%= form_for @user do |f| %>
 
     <div>
         <%= f.label :username %>
@@ -10,9 +15,11 @@
         <%= f.label :password %>
         <%= f.password_field :password %>
     </div>
-    
+
     <div>
         <%= f.submit 'Create Your Account' %>
     </div>
 
-<% end %>
+    <% end %>
+
+</div>
