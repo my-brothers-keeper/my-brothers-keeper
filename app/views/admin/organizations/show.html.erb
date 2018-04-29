@@ -4,3 +4,13 @@
   "https://www.google.com/maps/search/?api=1&query=#{@organization.address.to_param}",
   target: '_blank'
 %>
+
+<ul>
+  <% @organization.needs.each do |need| %>
+    <li>
+      <%= need.item %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add item request', new_admin_organization_need_path(@organization) %>
