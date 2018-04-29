@@ -15,6 +15,22 @@ ActiveRecord::Schema.define(version: 2018_04_28_204415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "needs", force: :cascade do |t|
+    t.bigint "organization_id"
+    t.string "item", null: false
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
@@ -23,4 +39,5 @@ ActiveRecord::Schema.define(version: 2018_04_28_204415) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "needs", "organizations"
 end
