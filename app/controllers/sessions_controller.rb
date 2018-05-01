@@ -2,10 +2,10 @@ class SessionsController < ApplicationController
     # User enters login data, we assign to a variable and check its params against the database to log them in.  If entered data doesn't match, just reload the login page
 
   def create 
-    @user = User.find_by(email: params[:session][:email])
+    @user = User.find_by(username: params[:session][:username])
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
-      redirect_to user_path
+      redirect_to users_path
     else
       render :new
     end

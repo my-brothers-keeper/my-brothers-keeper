@@ -15,15 +15,16 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to '/login'
     else
+      puts @user.errors.full_messages
       render 'new'
     end 
   end
 
   private
 
-  # Make params acccessible throughout Users Controller
+  # Make params acccessible for account creation
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:organization_id, :username, :email, :password)
   end
 end

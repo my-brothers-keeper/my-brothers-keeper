@@ -7,6 +7,11 @@
     <%= form_for @user do |f| %>
 
     <div>
+        <%= f.label :organization_id %>
+        <%= f.select :organization_id, Organization.all.collect {|o| [o.name, o.id]} %>
+    </div>
+
+    <div>
         <%= f.label :username %>
         <%= f.text_field :username %>
     </div>
