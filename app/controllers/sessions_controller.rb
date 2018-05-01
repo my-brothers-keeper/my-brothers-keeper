@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     # Destroy session (log out) and bring user back to the main login page
 
   def destroy
-    session.delete(:user_id)
+    log_out
     redirect_to login_path
   end
 end
