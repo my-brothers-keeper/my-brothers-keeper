@@ -14,9 +14,12 @@
       <div>
         <ul>
           <li><a href="/">Home</a></li>
-            <!-- if/else statement to change display; redirect to root after login and Org's main page content for selections will display -->
           <li><a href="/signup">Create Account</a></li>
+          <% if logged_in? %>
+          <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
+          <% else %>
           <li><a href="/login">Login</a></li>
+          <% end %>
         </ul>
       </div>
     </nav> 
