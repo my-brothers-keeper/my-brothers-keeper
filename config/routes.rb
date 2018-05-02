@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
-  get '/' => 'users#index'
+  root to: 'users#index'
 
   resources :users, only: [:new, :create, :index]
 
