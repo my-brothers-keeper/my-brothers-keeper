@@ -1,0 +1,103 @@
+<style>
+        body { position:absolute; left:0; right:0; top:0; bottom:0; margin:0; padding:0; }
+        #map { width:100%; height:100%; }
+    </style>
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamhvbGxpbmdlciIsImEiOiJjamdqc2gwemowbW5jMnhxOTM5Zmd0Zml6In0.dZcZikoQoM2lR_YGcxWgrg';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+    center: [-75.162398,39.957893], // starting position [lng, lat]
+    zoom: 14 // starting zoom
+});
+
+// Add geolocate control to the map.
+map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+}));
+
+map.on('load', function () {
+    // Add a layer showing the places.
+    map.addLayer({
+        "id": "places",
+        "type": "symbol",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Blessed Sarnelli Community</strong><p>2739 Kensington Ave, Philadelphia, PA 19134</p>",
+                        "icon": "star"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-75.123686, 39.990711]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Last Stop</strong><p>1816 East Somerset St, Philadelphia, PA 19134</p>",
+                        "icon": "star"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-75.122425, 39.991083]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {
+                        "description": "<strong>Rock Ministries</strong><p>2755 Kensington Ave, Philadelphia, PA 19134</p>",
+                        "icon": "star"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [-75.123333, 39.990912]
+                    }
+                }]
+            }
+        },
+        "layout": {
+            "icon-image": "{icon}-15",
+            "icon-allow-overlap": true
+        }
+    });
+});
+
+// When a click event occurs on a feature in the places layer, open a popup at the
+// location of the feature, with description HTML from its properties.
+map.on('click', 'places', function (e) {
+    var coordinates = e.features[0].geometry.coordinates.slice();
+    var description = e.features[0].properties.description;
+
+    // Ensure that if the map is zoomed out such that multiple
+    // copies of the feature are visible, the popup appears
+    // over the copy being pointed to.
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+
+    new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'places', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'places', function () {
+    map.getCanvas().style.cursor = '';
+});
+</script>
+<!--script type='text/javascript'>
+  var map = L.mapbox.map('div_orginization_map', 'pk.eyJ1IjoiamhvbGxpbmdlciIsImEiOiJjamdqc2gwemowbW5jMnhxOTM5Zmd0Zml6In0.dZcZikoQoM2lR_YGcxWgrg').setView([-75.162398, 39.957893], 7);
+</script-->

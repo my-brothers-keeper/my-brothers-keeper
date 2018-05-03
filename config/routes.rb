@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   root to: 'users#index'
 
+  get '/map', to: 'map#index'
+
   resources :users, only: [:new, :create, :index]
 
   namespace :admin do
