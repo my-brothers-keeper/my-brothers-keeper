@@ -1,13 +1,13 @@
 <%= form_for [:admin, @organization, @need] do |f| %>
-  <p>
+  <div class="form-group">
     <%= f.label :item %>
-    <%= f.text_field :item %>
-  </p>
+    <%= f.text_field :item, class: 'form-control' %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :comment %>
-    <%= f.text_field :comment %>
-  </p>
+    <%= f.text_field :comment, class: 'form-control' %>
+  </div>
 
-  <%= f.button 'Submit' %>
+  <%= f.button 'Submit', class: 'btn btn-primary' %>
 <% end %>
