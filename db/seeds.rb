@@ -1,5 +1,43 @@
 Organization.create(
-  name: 'Test organization',
-  description: 'Sample description.',
-  address: '123 Test Street, Philadelphia PA'
+  name: 'Blessed Sarnelli Community',
+  description: 'Blessed Sarnelli Community is an organization dedicated to providing for the needs of people who are poor and abandoned with an emphasis on empowering young adults to share in this commitment through prayer, hospitality and service.',
+  address: '2739 Kensington Ave, Philadelphia, PA 19134'
 )
+
+Need.create(organization_id: 1, item: 'white socks')
+Need.create(organization_id: 1, item: 'mens underwear')
+Need.create(organization_id: 1, item: 't-shirts')
+Need.create(organization_id: 1, item: 'bars of soap')
+Need.create(organization_id: 1, item: 'pants')
+Need.create(organization_id: 1, item: 'long underwear')
+Need.create(organization_id: 1, item: 'shoes')
+Need.create(organization_id: 1, item: 'sweaters')
+Need.create(organization_id: 1, item: 'jackets')
+Need.create(organization_id: 1, item: 'shaving cream')
+Need.create(organization_id: 1, item: 'razors')
+Need.create(organization_id: 1, item: 'shampoo')
+Need.create(organization_id: 1, item: 'conditioner')
+Need.create(organization_id: 1, item: 'body wash')
+Need.create(organization_id: 1, item: 'toothbrushes')
+Need.create(organization_id: 1, item: 'toothpaste')
+Need.create(organization_id: 1, item: 'lotion')
+Need.create(organization_id: 1, item: 'hair brushes')
+Need.create(organization_id: 1, item: 'nail clippers')
+Need.create(organization_id: 1, item: 'tomato sauce')
+Need.create(organization_id: 1, item: 'tomato paste')
+Need.create(organization_id: 1, item: 'crushed tomatoes')
+Need.create(organization_id: 1, item: 'ketchup')
+Need.create(organization_id: 1, item: 'black beans')
+Need.create(organization_id: 1, item: 'kidney beans')
+Need.create(organization_id: 1, item: 'pink beans' ) 
+Need.create(organization_id: 1, item: 'rice')
+Need.create(organization_id: 1, item: 'rice')
+Need.create(organization_id: 1, item: 'pasta')
+Need.create(organization_id: 1, item: 'coffee')
+Need.create(organization_id: 1, item: 'cake mixes')
+Need.create(organization_id: 1, item: 'canned fruits')
+Need.create(organization_id: 1, item: 'canned vegetables')
+Need.create(organization_id: 1, item: 'tuna')
+Need.create(organization_id: 1, item: 'peanut butter')
+Need.create(organization_id: 1, item: 'jelly')
+
