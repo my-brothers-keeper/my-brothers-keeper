@@ -14,7 +14,18 @@ module Admin
       click_button 'Submit'
 
       assert_equal admin_organization_path(organization), current_path
-      assert_text 'Socks'
+      assert_button 'Socks'
+    end
+
+    test 'disable a need' do
+      organization = create(:organization)
+      socks = create(:need, item: 'Socks', organization: organization)
+      visit admin_organization_path(organization)
+
+      click_button 'Socks'
+
+      assert_button 'Socks', class: 'btn-secondary'
+      assert_not socks.reload.enabled?
     end
   end
 end

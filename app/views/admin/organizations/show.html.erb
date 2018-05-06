@@ -5,10 +5,10 @@
   target: '_blank'
 %>
 
-<ul>
-  <% @organization.needs.each do |need| %>
+<ul class="list-unstyled">
+  <% @needs.each do |need| %>
     <li>
-      <%= need.item %>
+      <%= render need %>
     </li>
   <% end %>
 </ul>

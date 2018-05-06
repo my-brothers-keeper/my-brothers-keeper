@@ -13,5 +13,10 @@ Rails.application.routes.draw do
     resources :organizations, only: [:show] do
       resources :needs, only: [:new, :create]
     end
+
+    resources :needs, only: [] do
+      patch :enable
+      patch :disable
+    end
   end
 end
