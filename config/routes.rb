@@ -10,11 +10,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :index]
 
   namespace :admin do
-    resources :organizations, only: [:show] do
-      resources :needs, only: [:new, :create]
-    end
+    resources :organizations, only: [:show]
 
-    resources :needs, only: [] do
+    resources :needs, only: [:edit, :update] do
       patch :enable
       patch :disable
     end

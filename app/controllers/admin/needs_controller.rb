@@ -1,15 +1,13 @@
 class Admin::NeedsController < ApplicationController
-  def new
-    @organization = Organization.find(params[:organization_id])
-    @need = @organization.needs.new
+  def edit
+    @need = Need.find(params[:id])
   end
 
-  def create
-    @organization = Organization.find(params[:organization_id])
-    @need = @organization.needs.new(need_params)
+  def update
+    @need = Need.find(params[:id])
 
-    if @need.save
-      redirect_to [:admin, @organization]
+    if @need.update(need_params)
+      redirect_to [:admin, @need.organization]
     else
       render :new
     end
@@ -34,6 +32,6 @@ class Admin::NeedsController < ApplicationController
   private
 
   def need_params
-    params.require(:need).permit(:item, :comment)
+    params.require(:need).permit(:comment)
   end
 end
