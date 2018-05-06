@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :index]
 
   namespace :admin do
-    resources :organizations, only: [:new, :create, :show] do
+    resources :organizations, only: [:show] do
       resources :needs, only: [:new, :create]
     end
   end
