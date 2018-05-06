@@ -45,3 +45,5 @@ sarnelli_needs_list = [
 
 sarnelli_needs_list.each do | organization_id, item |
   Need.create(organization_id: organization_id, item: item)
+
+end
