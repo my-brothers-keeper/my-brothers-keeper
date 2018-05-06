@@ -4,40 +4,44 @@ Organization.create(
   address: '2739 Kensington Ave, Philadelphia, PA 19134'
 )
 
-Need.create(organization_id: 1, item: 'white socks')
-Need.create(organization_id: 1, item: 'mens underwear')
-Need.create(organization_id: 1, item: 't-shirts')
-Need.create(organization_id: 1, item: 'bars of soap')
-Need.create(organization_id: 1, item: 'pants')
-Need.create(organization_id: 1, item: 'long underwear')
-Need.create(organization_id: 1, item: 'shoes')
-Need.create(organization_id: 1, item: 'sweaters')
-Need.create(organization_id: 1, item: 'jackets')
-Need.create(organization_id: 1, item: 'shaving cream')
-Need.create(organization_id: 1, item: 'razors')
-Need.create(organization_id: 1, item: 'shampoo')
-Need.create(organization_id: 1, item: 'conditioner')
-Need.create(organization_id: 1, item: 'body wash')
-Need.create(organization_id: 1, item: 'toothbrushes')
-Need.create(organization_id: 1, item: 'toothpaste')
-Need.create(organization_id: 1, item: 'lotion')
-Need.create(organization_id: 1, item: 'hair brushes')
-Need.create(organization_id: 1, item: 'nail clippers')
-Need.create(organization_id: 1, item: 'tomato sauce')
-Need.create(organization_id: 1, item: 'tomato paste')
-Need.create(organization_id: 1, item: 'crushed tomatoes')
-Need.create(organization_id: 1, item: 'ketchup')
-Need.create(organization_id: 1, item: 'black beans')
-Need.create(organization_id: 1, item: 'kidney beans')
-Need.create(organization_id: 1, item: 'pink beans' ) 
-Need.create(organization_id: 1, item: 'rice')
-Need.create(organization_id: 1, item: 'rice')
-Need.create(organization_id: 1, item: 'pasta')
-Need.create(organization_id: 1, item: 'coffee')
-Need.create(organization_id: 1, item: 'cake mixes')
-Need.create(organization_id: 1, item: 'canned fruits')
-Need.create(organization_id: 1, item: 'canned vegetables')
-Need.create(organization_id: 1, item: 'tuna')
-Need.create(organization_id: 1, item: 'peanut butter')
-Need.create(organization_id: 1, item: 'jelly')
+sarnelli_needs_list = [
+[ 1, 'white socks' ],
+[ 1, 'mens underwear' ],
+[ 1, 't-shirts' ],
+[ 1, 'bars of soap' ],
+[ 1, 'pants' ],
+[ 1, 'long underwear' ],
+[ 1, 'shoes' ],
+[ 1, 'sweaters' ],
+[ 1, 'jackets' ],
+[ 1, 'shaving cream' ],
+[ 1, 'razors' ],
+[ 1, 'shampoo' ],
+[ 1, 'conditioner' ],
+[ 1, 'body wash' ],
+[ 1, 'toothbrushes' ],
+[ 1, 'toothpaste' ],
+[ 1, 'lotion' ],
+[ 1, 'hair brushes' ],
+[ 1, 'nail clippers' ],
+[ 1, 'tomato sauce' ],
+[ 1, 'tomato paste' ],
+[ 1, 'crushed tomatoes' ],
+[ 1, 'ketchup' ],
+[ 1, 'black beans' ],
+[ 1, 'kidney beans' ],
+[ 1, 'pink beans' ],
+[ 1, 'rice' ],
+[ 1, 'rice' ],
+[ 1, 'pasta' ],
+[ 1, 'coffee' ],
+[ 1, 'cake mixes' ],
+[ 1, 'canned fruits' ],
+[ 1, 'canned vegetables' ],
+[ 1, 'tuna' ],
+[ 1, 'peanut butter' ],
+[ 1, 'jelly' ]
+]
 
+sarnelli_needs_list.each do | organization_id, item |
+  Need.create(organization_id: organization_id, item: item)
