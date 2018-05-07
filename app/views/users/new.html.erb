@@ -2,34 +2,35 @@
 
 <div>
 
-<!-- Form to create an account -->
+  <!-- Form to create an account -->
 
-    <%= form_for @user do |f| %>
+  <%= form_for @user do |f| %>
 
-    <div>
-        <%= f.label :organization_id %>
-        <%= f.select :organization_id, Organization.all.collect {|o| [o.name, o.id]} %>
+    <div class="form-group">
+      <%= f.label :organization_id %>
+      <%= f.collection_select :organization_id,
+        Organization.all, :id, :name,
+        { prompt: true },
+        class: 'form-control' %>
     </div>
 
-    <div>
-        <%= f.label :username %>
-        <%= f.text_field :username %>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: 'form-control' %>
     </div>
 
-        <div>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %>
     </div>
 
-    <div>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
     </div>
 
-    <div>
-        <%= f.submit 'Create Your Account' %>
-    </div>
+    <%= f.submit 'Create Your Account', class: 'btn btn-primary' %>
 
-    <% end %>
+  <% end %>
 
 </div>
