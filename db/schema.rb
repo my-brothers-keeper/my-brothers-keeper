@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_04_005111) do
+ActiveRecord::Schema.define(version: 2018_05_08_231030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "needs", force: :cascade do |t|
     t.bigint "organization_id"
@@ -23,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_05_04_005111) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "enabled", default: true, null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_needs_on_category_id"
     t.index ["organization_id"], name: "index_needs_on_organization_id"
   end
 
@@ -45,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_05_04_005111) do
     t.index ["organization_id"], name: "index_users_on_organization_id"
   end
 
+  add_foreign_key "needs", "categories"
   add_foreign_key "needs", "organizations"
   add_foreign_key "users", "organizations"
 end
