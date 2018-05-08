@@ -1,0 +1,3 @@
+var btn_el = document.getElementById('need-btn-<%= @need.id %>');
+
+btn_el.outerHTML = '<%= j(render(@need)) %>';

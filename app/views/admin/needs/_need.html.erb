@@ -1,0 +1,17 @@
+<li id="need-btn-<%= need.id %>" >
+  <% if need.enabled? %>
+    <% url = admin_need_disable_path(need) %>
+    <% style = 'success' %>
+  <% else %>
+    <% url = admin_need_enable_path(need) %>
+    <% style = 'secondary' %>
+  <% end %>
+
+  <%= button_to need.item, url, method: :patch, remote: true,
+    class: "btn btn-inline btn-#{style} mt-2" %>
+
+  <% if need.enabled? %>
+    <%= link_to 'Add/edit comment',
+      edit_admin_need_path(need) %>
+  <% end %>
+</li>

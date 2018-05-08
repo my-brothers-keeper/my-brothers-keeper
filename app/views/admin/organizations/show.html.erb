@@ -5,12 +5,8 @@
   target: '_blank'
 %>
 
-<ul>
-  <% @organization.needs.each do |need| %>
-    <li>
-      <%= need.item %>
-    </li>
+<ul class="needs-list list-unstyled">
+  <% @needs.each do |need| %>
+    <%= render need %>
   <% end %>
 </ul>
-
-<%= link_to 'Add item request', new_admin_organization_need_path(@organization) %>
