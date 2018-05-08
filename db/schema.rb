@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_05_04_005111) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "enabled", default: true, null: false
     t.index ["organization_id"], name: "index_needs_on_organization_id"
   end
 

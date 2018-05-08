@@ -1,7 +1,7 @@
 <%= form_for [:admin, @organization, @need] do |f| %>
   <div class="form-group">
     <%= f.label :item %>
-    <%= f.text_field :item, class: 'form-control' %>
+    <%= f.text_field :item, class: 'form-control', disabled: true %>
   </div>
 
   <div class="form-group">
