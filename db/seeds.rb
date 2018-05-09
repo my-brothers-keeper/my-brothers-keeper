@@ -1,7 +1,8 @@
 sarnelli = Organization.create(
   name: 'Blessed Sarnelli Community',
   description: 'Blessed Sarnelli Community is an organization dedicated to providing for the needs of people who are poor and abandoned with an emphasis on empowering young adults to share in this commitment through prayer, hospitality and service.',
-  address: '2739 Kensington Ave, Philadelphia, PA 19134'
+  address: '2739 Kensington Ave, Philadelphia, PA 19134',
+  location: RGeo::Cartesian.preferred_factory(srid: 4326).point(-75.123686, 39.990711)
 )
 
 sarnelli_needs_list =  [
