@@ -5,8 +5,12 @@
   target: '_blank'
 %>
 
-<ul class="needs-list list-unstyled">
-  <% @needs.each do |need| %>
-    <%= render need %>
-  <% end %>
-</ul>
+<h2>Needs</h2>
+<% @needs.group_by(&:category).each do |category, needs| %>
+  <h3><%= category.name %></h3>
+  <div class="needs-list row">
+    <% needs.each do |need| %>
+      <%= render need %>
+    <% end %>
+  </div>
+<% end %>
