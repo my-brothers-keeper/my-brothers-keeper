@@ -3,7 +3,7 @@ module Admin
     def show
       @organization = Organization.find(params[:id])
 
-      @needs = @organization.needs.order(:item)
+      @needs = @organization.needs.order(:item).includes(:category)
     end
   end
 end
