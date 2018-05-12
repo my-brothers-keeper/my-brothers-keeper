@@ -11,8 +11,10 @@
     class: "btn btn-inline btn-#{style} mt-2" %>
 
   <% if need.enabled? %>
-    <%= link_to edit_admin_need_path(need) do %>
-      <i class="icon"></i>
+    <%= link_to edit_admin_need_path(need),
+      title: 'Add/edit comment',
+      class: 'edit-need-link' do %>
+      <%= open_iconic :icon, :wrench %>
     <% end %>
   <% end %>
 </div>

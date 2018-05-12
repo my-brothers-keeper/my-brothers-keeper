@@ -3,3 +3,16 @@
     display: inline-block;
   }
 }
+
+.edit-need-link {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 5px;
+  vertical-align: bottom;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    fill: #777;
+  }
+}
