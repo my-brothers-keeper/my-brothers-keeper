@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  def index
-  end
-
   # Permit user to enter data into params and create an account
 
   def new

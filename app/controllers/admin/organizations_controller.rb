@@ -1,5 +1,5 @@
 module Admin
-  class OrganizationsController < ApplicationController
+  class OrganizationsController < BaseController
     def show
       @organization = Organization.find(params[:id])
 
