@@ -7,6 +7,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
+    @needs = @organization.needs.order(:item).includes(:category)
     render layout: false
   end
 end
