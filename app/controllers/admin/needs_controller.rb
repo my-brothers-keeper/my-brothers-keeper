@@ -1,4 +1,4 @@
-class Admin::NeedsController < ApplicationController
+class Admin::NeedsController < Admin::BaseController
   def edit
     @need = Need.find(params[:id])
   end
