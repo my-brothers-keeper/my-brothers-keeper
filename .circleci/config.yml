@@ -7,19 +7,27 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-       - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.4.1-node-browsers
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+        environment: # environment variables for primary container
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: my-brothers-keeper
+          RAILS_ENV: test
+
+      - image: circleci/postgres:10.3-alpine-postgis # database image
+        environment: # environment variables for database
+          POSTGRES_USER: my-brothers-keeper
+          POSTGRES_DB: my-brothers-keeper_test
+          POSTGRES_PASSWORD: ""
 
     working_directory: ~/repo
 
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -31,30 +39,25 @@ jobs:
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
+      - run:
+          name: Set chromedriver version
+          command: chromedriver-update 2.34
+
       - save_cache:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
       # Database setup
-      - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
       # run tests!
       - run:
           name: run tests
           command: |
-            bundle exec rake test
-
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
-
-deployment:
-  production:
-    branch: master
-    heroku:
-      appname: my-brothers-keeper
+            bin/rails test
+            bin/rails test:system
