@@ -1,105 +1,67 @@
-<<<<<<< HEAD
 # Wipe everything clean first
 Need.destroy_all
 Category.destroy_all
 Organization.destroy_all
 
-category = Category.create!(name: 'uncategorized')
+uncategorized = Category.create!(name: "uncategorized")
+clothing = Category.create!(name: "Clothing")
+toiletries = Category.create!(name: "Toiletries")
+food_pantry_items = Category.create!(name: "Food Pantry Items")
+food = Category.create!(name: "Food")
+supplies = Category.create!(name: "Supplies")
+adults_clothing = Category.create!(name: "Adults' Clothing")
+childrens_clothing = Category.create!(name: "Childrens' Clothing")
 
 sarnelli = Organization.create!(
-  name: 'Blessed Sarnelli Community',
-  description: 'Blessed Sarnelli Community is an organization dedicated to providing for the needs of people who are poor and abandoned with an emphasis on empowering young adults to share in this commitment through prayer, hospitality and service.',
-  address: '2739 Kensington Ave, Philadelphia, PA 19134',
-=======
-sarnelli = Organization.create(
   name: "Blessed Sarnelli Community",
   description: "Blessed Sarnelli Community is an organization dedicated to providing for the needs of people who are poor and abandoned with an emphasis on empowering young adults to share in this commitment through prayer, hospitality and service.",
   address: "2739 Kensington Ave, Philadelphia, PA 19134",
->>>>>>> Added the rest of the organizations and needs to the seed file
   location: RGeo::Cartesian.preferred_factory(srid: 4326).point(-75.123686, 39.990711)
 )
 
 sarnelli_needs_list =  [
-<<<<<<< HEAD
-  'white socks',
-  'mens underwear',
-  't-shirts',
-  'bars of soap',
-  'pants',
-  'long underwear',
-  'shoes',
-  'sweaters',
-  'jackets',
-  'shaving cream',
-  'razors',
-  'shampoo',
-  'conditioner',
-  'body wash',
-  'toothbrushes',
-  'toothpaste',
-  'lotion',
-  'hair brushes',
-  'nail clippers',
-  'tomato sauce',
-  'tomato paste',
-  'crushed tomatoes',
-  'ketchup',
-  'black beans',
-  'kidney beans',
-  'pink beans',
-  'rice',
-  'pasta',
-  'coffee',
-  'cake mixes',
-  'canned fruits',
-  'canned vegetables',
-  'tuna',
-  'peanut butter',
-  'jelly'
-=======
-  "white socks", 
-  "mens underwear", 
-  "t-shirts", 
-  "bars of soap", 
-  "pants", 
-  "long underwear", 
-  "shoes", 
-  "sweaters", 
-  "jackets", 
-  "shaving cream", 
-  "razors", 
-  "shampoo", 
-  "conditioner", 
-  "body wash", 
-  "toothbrushes", 
-  "toothpaste", 
-  "lotion", 
-  "hair brushes", 
-  "nail clippers", 
-  "tomato sauce", 
-  "tomato paste", 
-  "crushed tomatoes", 
-  "ketchup", 
-  "black beans", 
-  "kidney beans", 
-  "pink beans", 
-  "rice", 
-  "pasta", 
-  "coffee", 
-  "cake mixes", 
-  "canned fruits", 
-  "canned vegetables", 
-  "tuna", 
-  "peanut butter", 
-  "jelly"
->>>>>>> Added the rest of the organizations and needs to the seed file
+  ["white socks", "Clothing"],
+  ["mens underwear", "Clothing"],
+  ["t-shirts", "Clothing"],
+  ["bars of soap", "Toiletries"],
+  ["pants", "Clothing"],
+  ["long underwear", "Clothing"],
+  ["shoes", "Clothing"],
+  ["sweaters", "Clothing"],
+  ["jackets", "Clothing"],
+  ["shaving cream", "Toiletries"],
+  ["razors", "Toiletries"],
+  ["shampoo", "Toiletries"],
+  ["conditioner", "Toiletries"],
+  ["body wash", "Toiletries"],
+  ["toothbrushes", "Toiletries"],
+  ["toothpaste", "Toiletries"],
+  ["lotion", "Toiletries"],
+  ["hair brushes", "Toiletries"],
+  ["nail clippers", "Toiletries"],
+  ["tomato sauce", "Food Pantry Items"],
+  ["tomato paste", "Food Pantry Items"],
+  ["crushed tomatoes", "Food Pantry Items"],
+  ["ketchup", "Food Pantry Items"],
+  ["black beans", "Food Pantry Items"],
+  ["kidney beans", "Food Pantry Items"],
+  ["pink beans", "Food Pantry Items"],
+  ["rice", "Food Pantry Items"],
+  ["pasta", "Food Pantry Items"],
+  ["coffee", "Food Pantry Items"],
+  ["cake mixes", "Food Pantry Items"],
+  ["canned fruits", "Food Pantry Items"],
+  ["canned vegetables", "Food Pantry Items"],
+  ["tuna", "Food Pantry Items"],
+  ["peanut butter", "Food Pantry Items"],
+  ["jelly", "Food Pantry Items"],
 ]
 
-sarnelli_needs_list.each do | item |
+sarnelli_needs_list.each do | item, category |
   Need.create!(
     organization_id: sarnelli.id,
     item: item,
-    category: category
+    category: Category.where(name: category).first || uncategorized
   )
 end
 
@@ -111,28 +73,32 @@ last_stop = Organization.create(
 )
 
 ls_needs_list = [
-  "Shoes",
-  "Socks",
-  "T-shirts",
-  "Underwear (men’s + women’s)",
-  "Bras",
-  "Jeans",
-  "Tanktops",
-  "Shorts",
-  "Hot dogs",
-  "Baked beans",
-  "Spaghetti",
-  "Tomato Sauce",
-  "Napkins",
-  "Paper towels",
-  "Large styrofoam cups",
-  "Iced tea mix",
-  "Coffee",
-  "Styrofoam/paper plates"
+  ["Shoes", "Clothing"],
+  ["Socks", "Clothing"],
+  ["T-shirts", "Clothing"],
+  ["Underwear (men’s + women’s)", "Clothing"],
+  ["Bras", "Clothing"],
+  ["Jeans", "Clothing"],
+  ["Tanktops", "Clothing"],
+  ["Shorts", "Clothing"],
+  ["Hot dogs", "Food"],
+  ["Baked beans", "Food"],
+  ["Spaghetti", "Food"],
+  ["Tomato Sauce", "Food"],
+  ["Napkins", "Supplies"],
+  ["Paper towels", "Supplies"],
+  ["Large styrofoam cups", "Supplies"],
+  ["Iced tea mix", "Food"],
+  ["Coffee", "Food"],
+  ["Styrofoam/paper plates", "Supplies"],
 ]
 
-ls_needs_list.each do | item |
-  Need.create(organization_id: last_stop.id, item: item)
+ls_needs_list.each do | item, category |
+  Need.create!(
+    organization_id: last_stop.id, 
+    item: item,
+    category: Category.where(name: category).first || uncategorized
+    )
 end
 
 rock = Organization.create(
@@ -143,23 +109,27 @@ rock = Organization.create(
 )
 
 rock_needs_list = [
-  "Shoes",
-  "Socks",
-  "T-shirts",
-  "Underwear (men’s + women’s)",
-  "Bras",
-  "Jeans",
-  "Tanktops",
-  "Shorts",
-  "Childrens shoes",
-  "Childrens socks",
-  "Childrens t-shirts",
-  "Childrens underwear",
-  "Childrens pants",
-  "Childrens shorts",
-  "Non-perishable foods"
+  ["Shoes", "Adults' Clothing"],
+  ["Socks","Adults' Clothing"],
+  ["T-shirts", "Adults' Clothing"],
+  ["Underwear (men’s + women’s)", "Adults' Clothing"],
+  ["Bras", "Adults' Clothing"],
+  ["Jeans", "Adults' Clothing"],
+  ["Tanktops", "Adults' Clothing"],
+  ["Shorts", "Adults' Clothing"],
+  ["shoes", "Childrens' Clothing"],
+  ["socks", "Childrens' Clothing"],
+  ["t-shirts", "Childrens' Clothing"],
+  ["underwear", "Childrens' Clothing"],
+  ["pants", "Childrens' Clothing"],
+  ["shorts", "Childrens' Clothing"],
+  ["Non-perishable foods", "Food Pantry Items"]
 ]
 
-rock_needs_list.each do | item |
-  Need.create(organization_id: rock.id, item: item)
+rock_needs_list.each do | item, category |
+  Need.create(
+    organization_id: rock.id, 
+    item: item,
+    category: Category.where(name: category).first || uncategorized
+    )
 end
