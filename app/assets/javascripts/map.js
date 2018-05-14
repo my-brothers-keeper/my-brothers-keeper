@@ -51,8 +51,9 @@ function load_organization_layer(map, source_url) {
     // When a click event occurs on a feature in the places layer, open a popup at the
     // location of the feature, with description HTML from its properties.
     map.on('click', 'places', function (e) {
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var id = e.features[0].id;
+        var feature = e.features[0];
+        var coordinates = feature.geometry.coordinates.slice();
+        var id = feature.id;
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -63,10 +64,7 @@ function load_organization_layer(map, source_url) {
         var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                new mapboxgl.Popup()
-                    .setLngLat(coordinates)
-                    .setHTML(this.responseText)
-                    .addTo(map);
+                showDetail(feature.properties.name, this.responseText);
             }
         };
         xhttp.open("GET", source_url + '/' + id, true);
@@ -80,4 +78,20 @@ function load_organization_layer(map, source_url) {
     map.on('mouseleave', 'places', function () {
         map.getCanvas().style.cursor = '';
     });
+}
+
+function showDetail(title, content)
+{
+    document.getElementById("detail-title").innerText = title;
+    document.getElementById("detail-content").innerHTML = content;
+    var view = document.getElementById("detail-view");
+    view.style.left = "0";
+    view.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0.3)";
+}
+
+function hideDetail()
+{
+    var view = document.getElementById("detail-view");
+    view.style.left = "-450px";
+    view.style.boxShadow = "none";
 }
