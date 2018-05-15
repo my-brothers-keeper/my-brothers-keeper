@@ -1,6 +1,12 @@
 class OrganizationsController < ApplicationController
   def index
-    features = Organization.all().map { |org| RGeo::GeoJSON::Feature.new org.location, id = org.id, properties = { "name" => org.name } }
+    features = Organization.all().map { |org|
+      RGeo::GeoJSON::Feature.new org.location, id = org.id, properties =
+      {
+        "name" => org.name,
+        "need_count" => org.needs.count
+      }
+    }
     collection = RGeo::GeoJSON::FeatureCollection.new features
     render json: RGeo::GeoJSON.encode(collection)
   end
