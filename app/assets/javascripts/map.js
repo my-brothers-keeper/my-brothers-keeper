@@ -48,26 +48,17 @@ function load_organization_layer(map, source_url) {
             }
         });
     });
-    // When a click event occurs on a feature in the places layer, open a popup at the
-    // location of the feature, with description HTML from its properties.
+    // When a click event occurs on a feature in the organizations layer,
+    // show the sidebar populated with an AJAX call to the show organization view
     map.on('click', 'places', function (e) {
         var feature = e.features[0];
-        var coordinates = feature.geometry.coordinates.slice();
-        var id = feature.id;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
         var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 showDetail(feature.properties.name, this.responseText);
             }
         };
-        xhttp.open("GET", source_url + '/' + id, true);
+        xhttp.open("GET", source_url + '/' + feature.id, true);
         xhttp.send();
     });
 
@@ -81,9 +72,8 @@ function load_organization_layer(map, source_url) {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
 
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var name = e.features[0].properties.name;
-        var need_count = e.features[0].properties.need_count;
+        var feature = e.features[0];
+        var coordinates = feature.geometry.coordinates.slice();
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -92,8 +82,8 @@ function load_organization_layer(map, source_url) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        var html = '<div class="popup"><p class="name">' + name + '</p>'
-            + '<p class="needs">Needs: ' + need_count + ' item(s)</p>'
+        var html = '<div class="popup"><p class="name">' + feature.properties.name + '</p>'
+            + '<p class="needs">Needs: ' + feature.properties.need_count + ' item(s)</p>'
             + '<p class="info">Click for more information.</p></div>';
 
         // Populate the popup and set its coordinates
