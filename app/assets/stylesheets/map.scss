@@ -12,7 +12,6 @@
     overflow-x: hidden;
     transition: 0.5s;
     width: 450px;
-    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);  */
 }
 
 #detail-view .detail-header {
@@ -101,7 +100,21 @@
 
 #detail-view .comment {
     display: block;
-    margin: 0;
+    margin: 5px;
     padding: 5px;
-    background-color: #eee;
+    background-color: #d8f0f8;
+}
+
+.popup p {
+    display: block;
+    margin: 0;
+    padding: 0px;
+}
+
+.popup p.name {
+    font-weight: bold;
+}
+
+.popup p.info {
+    color: #aaa;
 }

@@ -70,13 +70,42 @@ function load_organization_layer(map, source_url) {
         xhttp.open("GET", source_url + '/' + id, true);
         xhttp.send();
     });
-    // Change the cursor to a pointer when the mouse is over the places layer.
-    map.on('mouseenter', 'places', function () {
-        map.getCanvas().style.cursor = 'pointer';
+
+    // Create a popup, but don't add it to the map yet.
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
     });
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'places', function () {
+
+    map.on('mouseenter', 'places', function(e) {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var name = e.features[0].properties.name;
+        var need_count = e.features[0].properties.need_count;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        var html = '<div class="popup"><p class="name">' + name + '</p>'
+            + '<p class="needs">Needs: ' + need_count + ' item(s)</p>'
+            + '<p class="info">Click for more information.</p></div>';
+
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(coordinates)
+            .setHTML(html)
+            .addTo(map);
+    });
+
+    map.on('mouseleave', 'places', function() {
         map.getCanvas().style.cursor = '';
+        popup.remove();
     });
 }
 
