@@ -15,7 +15,7 @@
       <% needs.each do |need| %>
         <li class="need">
           <%= need.item %>
-          <% unless need.comment.nil? or need.comment =~ /^\s*$/ %>
+          <% unless need.comment.blank? %>
             <div class="comment">
               <%= need.comment %>
             </div>
