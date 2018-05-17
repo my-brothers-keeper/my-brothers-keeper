@@ -19,49 +19,50 @@ sarnelli = Organization.create!(
   location: RGeo::Cartesian.preferred_factory(srid: 4326).point(-75.123686, 39.990711)
 )
 
+
 sarnelli_needs_list =  [
-  ["white socks", "Clothing"],
-  ["mens underwear", "Clothing"],
-  ["t-shirts", "Clothing"],
-  ["bars of soap", "Toiletries"],
-  ["pants", "Clothing"],
-  ["long underwear", "Clothing"],
-  ["shoes", "Clothing"],
-  ["sweaters", "Clothing"],
-  ["jackets", "Clothing"],
-  ["shaving cream", "Toiletries"],
-  ["razors", "Toiletries"],
-  ["shampoo", "Toiletries"],
-  ["conditioner", "Toiletries"],
-  ["body wash", "Toiletries"],
-  ["toothbrushes", "Toiletries"],
-  ["toothpaste", "Toiletries"],
-  ["lotion", "Toiletries"],
-  ["hair brushes", "Toiletries"],
-  ["nail clippers", "Toiletries"],
-  ["tomato sauce", "Food Pantry Items"],
-  ["tomato paste", "Food Pantry Items"],
-  ["crushed tomatoes", "Food Pantry Items"],
-  ["ketchup", "Food Pantry Items"],
-  ["black beans", "Food Pantry Items"],
-  ["kidney beans", "Food Pantry Items"],
-  ["pink beans", "Food Pantry Items"],
-  ["rice", "Food Pantry Items"],
-  ["pasta", "Food Pantry Items"],
-  ["coffee", "Food Pantry Items"],
-  ["cake mixes", "Food Pantry Items"],
-  ["canned fruits", "Food Pantry Items"],
-  ["canned vegetables", "Food Pantry Items"],
-  ["tuna", "Food Pantry Items"],
-  ["peanut butter", "Food Pantry Items"],
-  ["jelly", "Food Pantry Items"],
+  ["white socks", clothing],
+  ["mens underwear", clothing],
+  ["t-shirts", clothing],
+  ["bars of soap", toiletries],
+  ["pants", clothing],
+  ["long underwear", clothing],
+  ["shoes", clothing],
+  ["sweaters", clothing],
+  ["jackets", clothing],
+  ["shaving cream", toiletries],
+  ["razors", toiletries],
+  ["shampoo", toiletries],
+  ["conditioner", toiletries],
+  ["body wash", toiletries],
+  ["toothbrushes", toiletries],
+  ["toothpaste", toiletries],
+  ["lotion", toiletries],
+  ["hair brushes", toiletries],
+  ["nail clippers", toiletries],
+  ["tomato sauce", food_pantry_items],
+  ["tomato paste", food_pantry_items],
+  ["crushed tomatoes", food_pantry_items],
+  ["ketchup", food_pantry_items],
+  ["black beans", food_pantry_items],
+  ["kidney beans", food_pantry_items],
+  ["pink beans", food_pantry_items],
+  ["rice", food_pantry_items],
+  ["pasta", food_pantry_items],
+  ["coffee", food_pantry_items],
+  ["cake mixes", food_pantry_items],
+  ["canned fruits", food_pantry_items],
+  ["canned vegetables", food_pantry_items],
+  ["tuna", food_pantry_items],
+  ["peanut butter", food_pantry_items],
+  ["jelly", food_pantry_items],
 ]
 
 sarnelli_needs_list.each do | item, category |
   Need.create!(
     organization_id: sarnelli.id,
     item: item,
-    category: Category.where(name: category).first || uncategorized
+    category: category
   )
 end
 
@@ -73,31 +74,31 @@ last_stop = Organization.create(
 )
 
 ls_needs_list = [
-  ["Shoes", "Clothing"],
-  ["Socks", "Clothing"],
-  ["T-shirts", "Clothing"],
-  ["Underwear (men’s + women’s)", "Clothing"],
-  ["Bras", "Clothing"],
-  ["Jeans", "Clothing"],
-  ["Tanktops", "Clothing"],
-  ["Shorts", "Clothing"],
-  ["Hot dogs", "Food"],
-  ["Baked beans", "Food"],
-  ["Spaghetti", "Food"],
-  ["Tomato Sauce", "Food"],
-  ["Napkins", "Supplies"],
-  ["Paper towels", "Supplies"],
-  ["Large styrofoam cups", "Supplies"],
-  ["Iced tea mix", "Food"],
-  ["Coffee", "Food"],
-  ["Styrofoam/paper plates", "Supplies"],
+  ["Shoes", clothing],
+  ["Socks", clothing],
+  ["T-shirts", clothing],
+  ["Underwear (men’s + women’s)", clothing],
+  ["Bras", clothing],
+  ["Jeans", clothing],
+  ["Tanktops", clothing],
+  ["Shorts", clothing],
+  ["Hot dogs", food],
+  ["Baked beans", food],
+  ["Spaghetti", food],
+  ["Tomato Sauce", food],
+  ["Napkins", supplies],
+  ["Paper towels", supplies],
+  ["Large styrofoam cups", supplies],
+  ["Iced tea mix", food],
+  ["Coffee", food],
+  ["Styrofoam/paper plates", supplies],
 ]
 
 ls_needs_list.each do | item, category |
   Need.create!(
     organization_id: last_stop.id, 
     item: item,
-    category: Category.where(name: category).first || uncategorized
+    category: category
     )
 end
 
@@ -109,27 +110,27 @@ rock = Organization.create(
 )
 
 rock_needs_list = [
-  ["Shoes", "Adults' Clothing"],
-  ["Socks","Adults' Clothing"],
-  ["T-shirts", "Adults' Clothing"],
-  ["Underwear (men’s + women’s)", "Adults' Clothing"],
-  ["Bras", "Adults' Clothing"],
-  ["Jeans", "Adults' Clothing"],
-  ["Tanktops", "Adults' Clothing"],
-  ["Shorts", "Adults' Clothing"],
-  ["shoes", "Childrens' Clothing"],
-  ["socks", "Childrens' Clothing"],
-  ["t-shirts", "Childrens' Clothing"],
-  ["underwear", "Childrens' Clothing"],
-  ["pants", "Childrens' Clothing"],
-  ["shorts", "Childrens' Clothing"],
-  ["Non-perishable foods", "Food Pantry Items"]
+  ["Shoes", adults_clothing],
+  ["Socks",adults_clothing],
+  ["T-shirts", adults_clothing],
+  ["Underwear (men’s + women’s)", adults_clothing],
+  ["Bras", adults_clothing],
+  ["Jeans", adults_clothing],
+  ["Tanktops", adults_clothing],
+  ["Shorts", adults_clothing],
+  ["shoes", childrens_clothing],
+  ["socks", childrens_clothing],
+  ["t-shirts", childrens_clothing],
+  ["underwear", childrens_clothing],
+  ["pants", childrens_clothing],
+  ["shorts", childrens_clothing],
+  ["Non-perishable foods", food_pantry_items]
 ]
 
 rock_needs_list.each do | item, category |
   Need.create(
     organization_id: rock.id, 
     item: item,
-    category: Category.where(name: category).first || uncategorized
+    category: category
     )
 end
