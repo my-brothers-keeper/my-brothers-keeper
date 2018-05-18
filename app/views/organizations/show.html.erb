@@ -1,14 +1,27 @@
-<h1><%= @organization.name %></h1>
-<p><%= @organization.description %></p>
-<%= link_to @organization.address,
-  "https://www.google.com/maps/search/?api=1&query=#{@organization.address.to_param}",
-  target: '_blank'
-%>
+<div class="description"><%= @organization.description %></div>
 
-<ul>
-  <% @organization.needs.each do |need| %>
-    <li>
-      <%= need.item %>
-    </li>
+<div class="address">
+  <%= link_to @organization.address,
+    "https://www.google.com/maps/dir/?api=1&destination=#{@organization.address.to_param}",
+    target: '_blank'
+  %>
+</div>
+
+<h2 class="needs">Current Needs</h2>
+<div class="needs-list">
+  <% @needs.group_by(&:category).each do |category, needs| %>
+    <h3 class="category"><%= category.name %></h3>
+    <ul class="category">
+      <% needs.each do |need| %>
+        <li class="need">
+          <%= need.item %>
+          <% unless need.comment.blank? %>
+            <div class="comment">
+              <%= need.comment %>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+</div>
