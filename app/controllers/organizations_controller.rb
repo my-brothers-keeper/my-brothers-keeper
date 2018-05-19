@@ -7,7 +7,7 @@ class OrganizationsController < ApplicationController
     collection = RGeo::GeoJSON::FeatureCollection.new(
       Organization.all.map do |org|
         RGeo::GeoJSON::Feature.new(
-          org.location, org.id, name: org.name, need_count: org.needs.count
+          org.location, org.id, name: org.name, need_count: org.needs.where('enabled = true').count
         )
       end
     )
@@ -16,7 +16,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
-    @needs = @organization.needs.order(:item).includes(:category)
+    @needs = @organization.needs.where('enabled = true').order(:item).includes(:category)
     render layout: false
   end
 end
