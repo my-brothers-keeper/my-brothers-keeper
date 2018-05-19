@@ -2,6 +2,7 @@
 
 # Controller for serving organization GeoJSON and side-bar HTML content
 class OrganizationsController < ApplicationController
+
   def index
     collection = RGeo::GeoJSON::FeatureCollection.new(
       Organization.all.map do |org|

@@ -1,7 +1,7 @@
 module Admin
   class OrganizationsController < BaseController
     def show
-      @organization = Organization.find(params[:id])
+      @organization = current_user.organization
 
       @needs = @organization.needs.order(:item).includes(:category)
     end
