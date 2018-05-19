@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   # Permit user to enter data into params and create an account
-  skip_before_action :require_login, only: [:new, :create]
 
   def new
     @user = User.new

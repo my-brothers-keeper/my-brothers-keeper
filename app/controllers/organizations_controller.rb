@@ -2,7 +2,6 @@
 
 # Controller for serving organization GeoJSON and side-bar HTML content
 class OrganizationsController < ApplicationController
-  skip_before_action :require_login, only: [:index, :show]
 
   def index
     collection = RGeo::GeoJSON::FeatureCollection.new(
