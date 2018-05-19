@@ -14,7 +14,8 @@
     background-color: #fff;
     overflow-x: hidden;
     transition: 0.5s;
-    width: 450px;
+    width: 100%;
+    max-width: 450px;
 
     .detail-header {
         position: sticky;
