@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
+  get 'users' => 'admin/organizations#show'
+  
+
   root to: 'map#index'
 
   resources :organizations, only: [:index, :show]
@@ -18,4 +21,6 @@ Rails.application.routes.draw do
       patch :disable
     end
   end
+
+  
 end
