@@ -21,6 +21,8 @@ class InvitationToken
 
   def decode(token)
     JWT.decode(token, secret).first
+  rescue JWT::DecodeError
+    {}
   end
 
   private

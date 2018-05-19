@@ -7,9 +7,6 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="navbar-item">
-            <%= link_to 'Create Account', signup_path, class: 'nav-link' %>
-          </li>
           <% if logged_in? %>
             <li class="navbar-item">
               <%= link_to 'Log Out', logout_path, method: 'delete', class: 'nav-link' %>
