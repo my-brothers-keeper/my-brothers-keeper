@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
-    # User enters login data, we assign to a variable and check its params against the database to log them in.  If entered data doesn't match, just reload the login page
+  # User enters login data, we assign to a variable and check its params against the database to log them in.  If entered data doesn't match, just reload the login page
+  skip_before_action :require_login, only: [:new, :create]
+  
 
   def create 
-    @user = User.find_by(username: params[:session][:username])
+    @user = User.find_by(username: params[:session][:username].downcase)
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
       redirect_to users_path

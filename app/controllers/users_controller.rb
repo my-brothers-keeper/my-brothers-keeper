@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   # Permit user to enter data into params and create an account
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
     @user = User.new
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
   def create 
     @user = User.new(user_params)
     if @user.save
+      flash[:alert] = "Your account has been successfully created"
       redirect_to login_path
     else
       render 'new'
