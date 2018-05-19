@@ -5,7 +5,7 @@ module Admin
     test "show organization details" do
       organization = create(:organization, name: 'Shelter for homeless')
 
-      get "/admin/organizations/#{organization.id}"
+      get "/admin/organization"
 
       assert_select 'h1', 'Shelter for homeless'
     end
