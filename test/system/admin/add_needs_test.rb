@@ -3,8 +3,17 @@ require "application_system_test_case"
 module Admin
   class AddNeedsTest < ApplicationSystemTestCase
     test 'add comment to a need' do
+
       organization = create(:organization)
+
       need = create(:need, organization: organization)
+
+      user = create(:user, username: 'username', password: 'password', organization: organization)
+      visit login_path
+      fill_in 'Username', with: user.username
+      fill_in 'Password', with: user.password
+      click_button 'Login'
+
       visit admin_organization_path(organization)
 
       click_link 'Add/edit comment'
@@ -18,8 +27,17 @@ module Admin
     end
 
     test 'disable a need' do
-      organization = create(:organization)
+
+      organization = create(:organization)      
+
       socks = create(:need, item: 'Socks', organization: organization)
+
+      user = create(:user, username: 'username', password: 'password', organization: organization)
+      visit login_path
+      fill_in 'Username', with: user.username
+      fill_in 'Password', with: user.password
+      click_button 'Login' 
+
       visit admin_organization_path(organization)
 
       click_button 'Socks'
