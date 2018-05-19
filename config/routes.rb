@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
-  get 'users' => 'admin/organizations#show'
+  get 'admin' => 'admin/organizations#show'
   
 
   root to: 'map#index'
@@ -14,13 +14,11 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   namespace :admin do
-    resources :organizations, only: [:show]
+    resource :organization, only: [:show]
 
     resources :needs, only: [:edit, :update] do
       patch :enable
       patch :disable
     end
-  end
-
-  
+  end 
 end
