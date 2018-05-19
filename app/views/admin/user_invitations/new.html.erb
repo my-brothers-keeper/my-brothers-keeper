@@ -1,0 +1,10 @@
+<h1>Invite a new admin user</h1>
+
+<%= form_for [:admin, @user_invitation] do |f| %>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+
+  <%= f.button 'Send Invitation', class: 'btn btn-primary' %>
+<% end %>

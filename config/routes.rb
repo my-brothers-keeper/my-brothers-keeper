@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resource :organization, only: [:show]
+    resources :user_invitations, only: [:new, :create]
 
     resources :needs, only: [:edit, :update] do
       patch :enable
