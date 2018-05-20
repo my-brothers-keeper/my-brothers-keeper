@@ -82,8 +82,9 @@ function load_organization_layer(map, source_url) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
+        var plural = feature.properties.need_count == 1 ? '' : 's';
         var html = '<div class="popup"><p class="name">' + feature.properties.name + '</p>'
-            + '<p class="needs">Needs: ' + feature.properties.need_count + ' item(s)</p>'
+            + '<p class="needs">Needs: ' + feature.properties.need_count + ' item' + plural + '</p>'
             + '<p class="info">Click for more information.</p></div>';
 
         // Populate the popup and set its coordinates
