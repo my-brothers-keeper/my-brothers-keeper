@@ -25,7 +25,9 @@
 
     a {
         text-decoration: none;
-        transition: 0.3s;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .closebtn {
@@ -75,13 +77,14 @@
 
     .description {
         margin: 0;
-        padding: 20px;
+        padding: 15px;
         border-bottom: 1px solid #eee;
     }
 
-    .address {
+    .detail {
         margin: 0;
-        padding: 20px;
+        padding: 5px 15px;
+        border-bottom: 1px solid #eee;
     }
 
     ul {

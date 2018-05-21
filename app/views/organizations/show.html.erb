@@ -1,11 +1,31 @@
 <div class="description"><%= @organization.description %></div>
 
-<div class="address">
-  <%= link_to @organization.address,
-    "https://www.google.com/maps/dir/?api=1&destination=#{@organization.address.to_param}",
+<div class="detail address">
+  <%= link_to @address,
+    "https://www.google.com/maps/dir/?api=1&destination=#{@address.to_param}",
     target: '_blank'
   %>
 </div>
+
+<% unless @organization.website.blank? %>
+  <div class="detail website">
+    <%= link_to @organization.website.sub(/^https?\:\/\/(www.)?/, ''),
+      @organization.website,
+      target: '_blank' %>
+  </div>
+<% end %>
+
+<% unless @organization.contact_phone.blank? %>
+  <div class="detail phone">
+    <%= @organization.contact_phone %>
+  </div>
+<% end %>
+
+<% unless @organization.contact_email.blank? %>
+  <div class="detail email">
+    <%= @organization.contact_email %>
+  </div>
+<% end %>
 
 <h2 class="needs">Current Needs</h2>
 <div class="needs-list">

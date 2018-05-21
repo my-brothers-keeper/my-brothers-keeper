@@ -2,7 +2,6 @@
 
 # Controller for serving organization GeoJSON and side-bar HTML content
 class OrganizationsController < ApplicationController
-
   def index
     collection = RGeo::GeoJSON::FeatureCollection.new(
       Organization.all.map do |org|
@@ -16,6 +15,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
+    @address = "#{@organization.address}, #{@organization.city}, #{@organization.state} #{@organization.zip_code}"
     @needs = @organization.needs.where('enabled = true').order(:item).includes(:category)
     render layout: false
   end
