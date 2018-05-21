@@ -25,9 +25,6 @@
 
     a {
         text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
     }
 
     .closebtn {
@@ -41,6 +38,7 @@
         font-size: 36px;
         z-index: 110;
         text-align: center;
+        transition: 0.3s;
 
         &:hover {
             background-color: #ccc;
@@ -83,8 +81,32 @@
 
     .detail {
         margin: 0;
-        padding: 5px 15px;
+        padding: 5px 45px;
         border-bottom: 1px solid #eee;
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .address {
+        background: url(icon-marker-60.png) no-repeat 15px;
+        background-size: 20px;
+    }
+
+    .website {
+        background: url(icon-website-60.png) no-repeat 15px;
+        background-size: 20px;
+    }
+
+    .phone {
+        background: url(icon-phone-60.png) no-repeat 15px;
+        background-size: 20px;
+    }
+
+    .email {
+        background: url(icon-email-60.png) no-repeat 15px;
+        background-size: 20px;
     }
 
     ul {
