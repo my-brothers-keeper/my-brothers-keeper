@@ -1,4 +1,8 @@
 <h1><%= @organization.name %></h1>
+<%= link_to 'Invite New Admin',
+  new_admin_user_invitation_path,
+  class: 'btn btn-secondary mb-2' %>
+
 <p><%= @organization.description %></p>
 <%= link_to @organization.address,
   "https://www.google.com/maps/search/?api=1&query=#{@organization.address.to_param}",
