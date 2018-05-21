@@ -14,7 +14,8 @@
     background-color: #fff;
     overflow-x: hidden;
     transition: 0.5s;
-    width: 450px;
+    width: 100%;
+    max-width: 450px;
 
     .detail-header {
         position: sticky;
@@ -24,7 +25,6 @@
 
     a {
         text-decoration: none;
-        transition: 0.3s;
     }
 
     .closebtn {
@@ -38,6 +38,7 @@
         font-size: 36px;
         z-index: 110;
         text-align: center;
+        transition: 0.3s;
 
         &:hover {
             background-color: #ccc;
@@ -74,13 +75,38 @@
 
     .description {
         margin: 0;
-        padding: 20px;
+        padding: 15px;
         border-bottom: 1px solid #eee;
     }
 
-    .address {
+    .detail {
         margin: 0;
-        padding: 20px;
+        padding: 5px 45px;
+        border-bottom: 1px solid #eee;
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .address {
+        background: url(<%= asset_path 'icon-marker-60.png' %>) no-repeat 15px;
+        background-size: 20px;
+    }
+
+    .website {
+        background: url(<%= asset_path 'icon-website-60.png' %>) no-repeat 15px;
+        background-size: 20px;
+    }
+
+    .phone {
+        background: url(<%= asset_path 'icon-phone-60.png' %>) no-repeat 15px;
+        background-size: 20px;
+    }
+
+    .email {
+        background: url(<%= asset_path 'icon-email-60.png' %>) no-repeat 15px;
+        background-size: 20px;
     }
 
     ul {
