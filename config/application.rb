@@ -16,6 +16,6 @@ module BrothersKeeper
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.action_mailer.default_url_options = { host: ENV.fetch('HOST', 'localhost:3000') }
+    config.action_mailer.default_url_options = { host: ENV.fetch('DOMAIN', 'localhost:3000') }
   end
 end
