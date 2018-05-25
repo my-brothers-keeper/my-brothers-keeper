@@ -14,35 +14,27 @@ The app's landing page is a map showing the location of each organization.  Dono
 
 * Website (if applicable)
 
-## Gem Dependencies for Local Development
+## Getting Started
 
-### Ruby Version
-  * Ruby '2.4.1'
+We recommend [Homebrew](https://brew.sh/) for macOS users to make installation of other dependencies easy to understand.
 
-### Rails Version 
-  * gem 'rails', '~> 5.2.0'
+Developers will need to manually install [Ruby](https://www.ruby-lang.org/en/documentation/installation/#homebrew), and [PostgreSQL](https://www.postgresql.org/download/) if you don't already have them.  These links provide detailed instructions for users of various operating systems.
 
-### PostgreSQL
-  * gem 'pg'
+You will also need the ActiveRecord PostGIS Adapter to enable spatial DB columns with PostgreSQL in Rails, which can be found with installation instructions [here](https://github.com/rgeo/activerecord-postgis-adapter).
 
-### Enable Spatial DB Columns with ActiveRecord
-  * gem 'activerecord-postgis-adapter'
+Ruby v. 2.4.1 is the specific version currently in use in the project.  Assuming you already have [RVM](https://rvm.io/rvm/install), you can run:
 
-### Tools for Mapping
-  * gem 'rgeo-geojson'
-  * gem 'mapbox-gl-rails'
+```
+rvm list
+```
 
-### Password Hashing
-  * gem 'bcrypt', '~> 3.1.7'
+to check if you already have this version available.  If not, run:
 
-### JSON Web Tokens
-  * gem 'jwt'
+```
+rvm install ruby-2.4.1
+```
 
-### Bootstrap 
-  * gem 'bootstrap', '~> 4.1.1'
-
-### Icons for Need Comments
-  * gem 'open-iconic-rails'
+Once you've cloned and set up this environment, `bundle install` will take care of your other gem dependencies.
 
 ### LICENSE
 
