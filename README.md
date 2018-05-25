@@ -16,11 +16,9 @@ The app's landing page is a map showing the location of each organization.  Dono
 
 ## Getting Started
 
-We recommend [Homebrew](https://brew.sh/) for macOS users to make installation of other dependencies easy to understand.
+We recommend [Homebrew](https://brew.sh/) for macOS users to simplify installation of dependencies.
 
-Developers will need to manually install [Ruby](https://www.ruby-lang.org/en/documentation/installation/#homebrew), and [PostgreSQL](https://www.postgresql.org/download/) if you don't already have them.  These links provide detailed instructions for users of various operating systems.
-
-You will also need the ActiveRecord PostGIS Adapter to enable spatial DB columns with PostgreSQL in Rails, which can be found with installation instructions [here](https://github.com/rgeo/activerecord-postgis-adapter).
+Developers will need to manually install [Ruby](https://www.ruby-lang.org/en/documentation/installation/#homebrew),  [PostgreSQL](https://www.postgresql.org/download/), and [PostGIS](https://postgis.net/install/) if you don't already have them.  These links provide detailed instructions for users of various operating systems.
 
 Ruby v. 2.4.1 is the specific version currently in use in the project.  Assuming you already have [RVM](https://rvm.io/rvm/install), you can run:
 
