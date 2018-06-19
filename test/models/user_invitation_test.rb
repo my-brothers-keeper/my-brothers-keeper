@@ -29,7 +29,7 @@ class UserInvitationTest < ActiveSupport::TestCase
 
     invitation.send_invitation_email
 
-    new_user = User.where(email: 'user@example.com', password_digest: nil)
+    new_user = User.where(email: 'user@example.com', encrypted_password: nil)
     assert new_user.exists?
   end
 end

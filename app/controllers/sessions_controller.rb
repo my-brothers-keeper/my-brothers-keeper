@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
 
   def create 
     @user = User.find_by(username: params[:session][:username])
-    if @user && @user.authenticate(params[:session][:password])
-      log_in @user
+    if @user && @user.valid_password?(params[:session][:password])
+      sign_in @user
       redirect_to admin_path
     else
       render :new
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     # Destroy session (log out) and bring user back to the main login page
 
   def destroy
-    log_out
+    sign_out
     redirect_to login_path
   end
 end
