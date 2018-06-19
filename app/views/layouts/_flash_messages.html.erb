@@ -1,0 +1,5 @@
+<% %i[alert notice].each do |level| %>
+  <% if flash[level] %>
+    <div class="<%= level %>"><%= flash[level] %></div>
+  <% end %>
+<% end %>

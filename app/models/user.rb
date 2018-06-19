@@ -1,4 +1,6 @@
 class User < ApplicationRecord
-  has_secure_password
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable,
+         :validatable
+
   belongs_to :organization
 end
